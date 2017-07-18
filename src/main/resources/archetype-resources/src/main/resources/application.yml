@@ -1,0 +1,76 @@
+debug: false
+
+server:
+  tomcat:
+    uri-encoding: utf-8
+
+logging:
+  level:
+    root: info
+
+spring:
+  profiles:
+    active: @mvn.profile.active@
+  datasource:
+    druid:
+      max-wait: 30000
+      validation-query: SELECT 1
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      use-global-data-source-stat: true
+      stat:
+        log-slow-sql: true
+        slow-sql-millis: 1000
+        merge-sql: true
+      wall:
+        enabled: true
+        log-violation: true
+        throw-exception: false
+      slf4j:
+        enabled: true
+        statement-executable-sql-log-enable: true
+      stat-view-servlet:
+        enabled: true
+  transaction:
+    rollback-on-commit-failure: true
+  mvc:
+    servlet:
+      load-on-startup: 1
+    dateFormat: yyyy-MM-dd HH:mm:ss
+  aop:
+    auto: true
+    proxy-target-class: true
+  http:
+    encoding:
+      enabled: true
+      force: true
+      charset: utf-8
+    converters:
+      preferred-json-mapper: fastjson
+
+mybatis:
+  type-aliases-package: ${package}.model.domain
+  mapper-locations: classpath:mappers/*.xml
+  check-config-location: false
+  configuration:
+    cache-enabled: false
+    lazy-loading-enabled: false
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+
+#https://github.com/abel533/Mapper/tree/master/wiki/mapper3
+mapper:
+  mappers:
+    - ${package}.util.BaseMapper
+  not-empty: true
+  identity: MYSQL
+
+#https://github.com/pagehelper/Mybatis-PageHelper/blob/master/wikis/zh/HowToUse.md
+pagehelper:
+  helper-dialect: mysql
+  offset-as-page-num: true
+  row-bounds-with-count: false
+  page-size-zero: false
+  reasonable: false
+  support-methods-arguments: false
+  auto-runtime-dialect: false

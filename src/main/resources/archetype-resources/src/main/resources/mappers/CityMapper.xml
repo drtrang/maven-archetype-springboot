@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${package}.mapper.CityMapper">
+    <resultMap id="BaseResultMap" type="${package}.model.domain.City">
+        <!-- WARNING - @mbg.generated -->
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="NAME" jdbcType="VARCHAR" property="name"/>
+        <result column="STATE" jdbcType="VARCHAR" property="state"/>
+        <result column="COUNTRY" jdbcType="VARCHAR" property="country"/>
+    </resultMap>
+
+    <sql id="BaseColumns">
+        <!-- WARNING - @mbg.generated -->
+        ID, NAME, STATE, COUNTRY
+    </sql>
+
+</mapper>
