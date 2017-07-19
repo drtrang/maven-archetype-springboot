@@ -20,7 +20,7 @@ public class SpringBootTemplateApplicationTests extends BaseTest {
     public void selectPage() {
         PageInfo<City> pageInfo = cityService.selectPageAndCount(null, 1, 3);
         log.info("--- start ---");
-        log.info(JsonUtils.toJson(pageInfo));
+        pageInfo.getList().stream().map(JsonUtils::toJson).forEach(log::info);
         log.info("--- end ---");
     }
 

@@ -37,7 +37,6 @@ spring:
   mvc:
     servlet:
       load-on-startup: 1
-    dateFormat: yyyy-MM-dd HH:mm:ss
   aop:
     auto: true
     proxy-target-class: true
