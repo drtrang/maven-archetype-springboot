@@ -2,9 +2,9 @@ package ${package}.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.google.common.base.Joiner;
 import ${package}.service.BaseService;
 import ${package}.util.BaseMapper;
-import com.google.common.base.Joiner;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;

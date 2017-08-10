@@ -8,6 +8,7 @@
     <version>${version}</version>
 
     <name>${project.artifactId}</name>
+    <description>${project.artifactId}</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

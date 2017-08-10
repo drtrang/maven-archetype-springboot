@@ -1,6 +1,4 @@
-package $
-
-import java.lang.annotation.Annotation;{package}.plugin;
+package ${package}.plugin;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
