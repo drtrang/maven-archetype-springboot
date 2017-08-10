@@ -38,8 +38,7 @@ public class Swagger2Config {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("title")
-                .description("description")
+                .title("接口文档")
                 .contact(new Contact("Trang", "https://github.com/drtrang", "donghao.l@hotmail.com"))
                 .version("1.0")
                 .build();
