@@ -7,6 +7,8 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
+import org.springframework.core.annotation.Order;
+import org.springframework.http.converter.json.GsonFactoryBean;
 
 /**
  * Spring Bean 声明
@@ -14,10 +16,10 @@ import org.springframework.context.annotation.Scope;
  * @author trang
  */
 @Configuration
+@Order(999)
 public class SpringBeanConfig {
 
     @Bean
-    @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
     public static SpringContextHolder springContextHolder() {
         return new SpringContextHolder();
     }

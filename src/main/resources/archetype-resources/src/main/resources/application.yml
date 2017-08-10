@@ -1,9 +1,5 @@
 debug: false
 
-server:
-  tomcat:
-    uri-encoding: utf-8
-
 logging:
   level:
     root: info
@@ -46,7 +42,7 @@ spring:
       force: true
       charset: utf-8
     converters:
-      preferred-json-mapper: fastjson
+      preferred-json-mapper: jackson
 
 mybatis:
   type-aliases-package: ${package}.model.domain

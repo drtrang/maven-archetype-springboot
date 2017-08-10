@@ -2,8 +2,8 @@ package ${package}.plugin;
 
 import ${package}.util.JsonUtils;
 import com.google.common.collect.Maps;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -17,12 +17,11 @@ import java.util.Map;
  * @author trang
  */
 @RestControllerAdvice
+@Slf4j
 public class GlobalExceptionHandler {
 
-    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
-
     @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<?> handleException(HttpServletRequest request, Exception e) {
+    public ResponseEntity<?> handleRuntimeException(HttpServletRequest request, RuntimeException e) {
         printStackTrace(request, e);
         return ResponseEntity.badRequest().body(e.getMessage());
     }
@@ -42,8 +41,7 @@ public class GlobalExceptionHandler {
         Map<String, Object> map = Maps.transformValues(
                 params, arr -> arr.length == 0 ? null : arr.length == 1 ? arr[0] : arr
         );
-        log.error("handle:{}, msg:{}, params:{}", e.getClass()
-                .getName(), e.getMessage(), JsonUtils.toJson(map));
+        log.error("handle:{}, msg:{}, params:{}", e.getClass().getName(), e.getMessage(), JsonUtils.toJson(map));
     }
 
     /**

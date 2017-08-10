@@ -1,7 +1,6 @@
 spring:
   datasource:
-    driver-class-name:
-    url:
+    url: jdbc:mysql://
     username:
     password:
     druid:

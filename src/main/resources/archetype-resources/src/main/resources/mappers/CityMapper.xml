@@ -3,15 +3,15 @@
 <mapper namespace="${package}.mapper.CityMapper">
     <resultMap id="BaseResultMap" type="${package}.model.domain.City">
         <!-- WARNING - @mbg.generated -->
-        <id column="ID" jdbcType="INTEGER" property="id"/>
-        <result column="NAME" jdbcType="VARCHAR" property="name"/>
-        <result column="STATE" jdbcType="VARCHAR" property="state"/>
-        <result column="COUNTRY" jdbcType="VARCHAR" property="country"/>
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="state" jdbcType="VARCHAR" property="state"/>
+        <result column="country" jdbcType="VARCHAR" property="country"/>
     </resultMap>
 
     <sql id="BaseColumns">
         <!-- WARNING - @mbg.generated -->
-        ID, NAME, STATE, COUNTRY
+        id, name, state, country
     </sql>
 
 </mapper>

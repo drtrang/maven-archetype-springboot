@@ -3,39 +3,56 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.4.RELEASE</version>
-    </parent>
-
     <groupId>${groupId}</groupId>
     <artifactId>${artifactId}</artifactId>
     <version>${version}</version>
 
     <name>${project.artifactId}</name>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.6.RELEASE</version>
+    </parent>
+
     <properties>
         <!-- 工程参数 -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <!-- 三方库 -->
-        <druid-spring-boot-starter.version>1.0.2</druid-spring-boot-starter.version>
-        <h2.version>1.4.195</h2.version>
+        <!-- 基础依赖 -->
         <mybatis-spring-boot-starter.version>1.3.0</mybatis-spring-boot-starter.version>
         <mapper-spring-boot-starter.version>1.1.3</mapper-spring-boot-starter.version>
         <mapper.version>3.4.2</mapper.version>
+        <pagehelper-spring-boot-starter.version>1.1.3</pagehelper-spring-boot-starter.version>
         <mybatis-generator.version>1.3.5</mybatis-generator.version>
         <mybatis-generator-extension.version>0.0.2</mybatis-generator-extension.version>
-        <pagehelper-spring-boot-starter.version>1.1.2</pagehelper-spring-boot-starter.version>
-        <guava.version>22.0</guava.version>
-        <copiers.version>1.1.1</copiers.version>
-        <fastjson.version>1.2.35</fastjson.version>
+        <druid-spring-boot-starter.version>1.0.3</druid-spring-boot-starter.version>
+        <sharding-jdbc.version>1.5.0</sharding-jdbc.version>
+        <spring-kafka.version>1.2.2.RELEASE</spring-kafka.version>
+        <redisson.version>3.5.0</redisson.version>
+        <dubbo.version>2.5.3</dubbo.version>
+        <netty.4.version>4.1.7.Final</netty.4.version>
+        <zkclient.version>0.10</zkclient.version>
+        <rxjava.version>2.1.2</rxjava.version>
         <cglib.version>3.2.5</cglib.version>
+        <fst.version>2.52</fst.version>
+        <swagger2.version>2.7.0</swagger2.version>
+        <!-- 第三方工具包 -->
+        <copiers.version>1.1.1</copiers.version>
+        <commons-collections4>4.1</commons-collections4>
+        <commons-fileupload.version>1.3.3</commons-fileupload.version>
+        <commons-io.version>2.5</commons-io.version>
+        <commons-lang3>3.6</commons-lang3>
+        <commons-logging.version>99.0-does-not-exist</commons-logging.version>
+        <fastjson.version>1.2.36</fastjson.version>
+        <guava.version>23.0</guava.version>
+        <junit.params.version>1.1.0</junit.params.version>
+        <okhttp.version>3.8.1</okhttp.version>
+        <univocity.parsers.version>2.5.2</univocity.parsers.version>
         <!-- Maven 插件 -->
         <maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
-        <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.6.2</maven-compiler-plugin.version>
         <maven-dependency-plugin.version>3.0.1</maven-dependency-plugin.version>
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
         <maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
@@ -55,17 +72,38 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jetty</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.eclipse.jetty.websocket</groupId>
+                    <artifactId>javax-websocket-server-impl</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.jetty.websocket</groupId>
+                    <artifactId>websocket-server</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>${mybatis-spring-boot-starter.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.drtrang</groupId>
-            <artifactId>mybatis-generator-extension</artifactId>
-            <version>${mybatis-generator-extension.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.tomcat</groupId>
+                    <artifactId>tomcat-jdbc</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>tk.mybatis</groupId>
@@ -73,8 +111,8 @@
             <version>${mapper-spring-boot-starter.version}</version>
             <exclusions>
                 <exclusion>
-                    <groupId>org.mybatis.spring.boot</groupId>
-                    <artifactId>mybatis-spring-boot-starter</artifactId>
+                    <groupId>org.apache.tomcat</groupId>
+                    <artifactId>tomcat-jdbc</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -85,27 +123,19 @@
         </dependency>
         <dependency>
             <groupId>com.github.drtrang</groupId>
+            <artifactId>mybatis-generator-extension</artifactId>
+            <version>${mybatis-generator-extension.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.drtrang</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>${druid-spring-boot-starter.version}</version>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <groupId>mysql</groupId>
             <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-cache</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.fasterxml.jackson.core</groupId>
-                    <artifactId>jackson-databind</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -117,8 +147,30 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+            <version>${redisson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>${cglib.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>de.ruedigermoeller</groupId>
+            <artifactId>fst</artifactId>
+            <version>${fst.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -132,19 +184,55 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>com.github.drtrang</groupId>
-            <artifactId>copiers</artifactId>
-            <version>${copiers.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
         </dependency>
         <dependency>
-            <groupId>cglib</groupId>
-            <artifactId>cglib</artifactId>
-            <version>${cglib.version}</version>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>${commons-logging.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>${commons-collections4}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>${commons-fileupload.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.drtrang</groupId>
+            <artifactId>copiers</artifactId>
+            <version>${copiers.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.univocity</groupId>
+            <artifactId>univocity-parsers</artifactId>
+            <version>${univocity.parsers.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>pl.pragmatists</groupId>
+            <artifactId>JUnitParams</artifactId>
+            <version>${junit.params.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -159,21 +247,18 @@
             </activation>
             <dependencies>
                 <dependency>
-                    <groupId>com.h2database</groupId>
-                    <artifactId>h2</artifactId>
-                    <version>${h2.version}</version>
-                    <scope>runtime</scope>
+                    <groupId>io.springfox</groupId>
+                    <artifactId>springfox-swagger2</artifactId>
+                    <version>${swagger2.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.springfox</groupId>
+                    <artifactId>springfox-swagger-ui</artifactId>
+                    <version>${swagger2.version}</version>
                 </dependency>
             </dependencies>
             <build>
                 <plugins>
-                    <plugin>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${maven-surefire-plugin.version}</version>
-                        <configuration>
-                            <skip>true</skip>
-                        </configuration>
-                    </plugin>
                     <plugin>
                         <groupId>org.mybatis.generator</groupId>
                         <artifactId>mybatis-generator-maven-plugin</artifactId>
@@ -188,11 +273,6 @@
                                 <groupId>mysql</groupId>
                                 <artifactId>mysql-connector-java</artifactId>
                                 <version>${mysql.version}</version>
-                            </dependency>
-                            <dependency>
-                                <groupId>com.h2database</groupId>
-                                <artifactId>h2</artifactId>
-                                <version>${h2.version}</version>
                             </dependency>
                             <dependency>
                                 <groupId>tk.mybatis</groupId>
@@ -210,16 +290,73 @@
             </build>
         </profile>
         <profile>
-            <id>test</id>
-            <properties>
-                <mvn.profile.active>test</mvn.profile.active>
-            </properties>
+            <id>coveralls</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.eluder.coveralls</groupId>
+                        <artifactId>coveralls-maven-plugin</artifactId>
+                        <version>${coveralls-maven-plugin.version}</version>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>cobertura-maven-plugin</artifactId>
+                        <version>${cobertura-maven-plugin.version}</version>
+                        <configuration>
+                            <format>xml</format>
+                            <maxmem>256m</maxmem>
+                            <aggregate>true</aggregate>
+                            <check>
+                                <haltOnFailure>true</haltOnFailure>
+                            </check>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
         <profile>
-            <id>prod</id>
-            <properties>
-                <mvn.profile.active>prod</mvn.profile.active>
-            </properties>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>${maven-javadoc-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <encoding>UTF-8</encoding>
+                            <additionalparam>-Xdoclint:none</additionalparam>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-deploy-plugin</artifactId>
+                        <version>${maven-deploy-plugin.version}</version>
+                        <configuration>
+                            <updateReleaseInfo>true</updateReleaseInfo>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-release-plugin</artifactId>
+                        <version>${maven-release-plugin.version}</version>
+                        <configuration>
+                            <autoVersionSubmodules>true</autoVersionSubmodules>
+                            <useReleaseProfile>true</useReleaseProfile>
+                            <releaseProfiles>release</releaseProfiles>
+                            <goals>deploy</goals>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
 
@@ -265,11 +402,15 @@
                     <encoding>${project.build.sourceEncoding}</encoding>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                    <compilerArgument>-parameters</compilerArgument>
                 </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
