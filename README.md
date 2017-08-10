@@ -7,7 +7,7 @@ Spring Boot Archetype 将帮助你快速生成 Spring Boot 项目。
 * [Maven 3](http://maven.apache.org/download.cgi)
 
 ## 特点
-* [Spring Boot 1.5.6.RELEASE](http://projects.spring.io/spring-boot/) & Jetty
+* [Spring Boot](http://projects.spring.io/spring-boot/) 1.5.6.RELEASE & Jetty
 * [MyBatis](http://www.mybatis.org/mybatis-3/zh/index.html) & [MyBatis Generator](http://www.mybatis.org/generator/) & [Mapper](https://github.com/abel533/mapper) & [PageHelper](https://github.com/pagehelper/Mybatis-PageHelper)
 * [Druid](https://github.com/alibaba/druid)
 * [Redisson](https://github.com/redisson/redisson)
@@ -18,7 +18,7 @@ Spring Boot Archetype 将帮助你快速生成 Spring Boot 项目。
 ## 运行
 ### 创建项目
 ```
-mvn archetype:generate -DarchetypeGroupId=com.github.drtrang -DarchetypeArtifactId=maven-archetype-springboot -DarchetypeVersion=1.0.0 -DgroupId=$groupId -DartifactId=$artifactId -Dversion=$version -Dpackage=$package
+mvn archetype:generate -DarchetypeGroupId=com.github.drtrang -DarchetypeArtifactId=maven-archetype-springboot -DarchetypeVersion=1.0.0 -DinteractiveMode=false -DgroupId=$groupId -DartifactId=$artifactId -Dversion=$version -Dpackage=$package
 ```
 
 其中 `$groupId`、`$artifactId`、`$version`、`$package` 为占位符，根据实际情况替换即可。
