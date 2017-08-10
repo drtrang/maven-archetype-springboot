@@ -1,7 +1,7 @@
 package ${package}.plugin;
 
-import ${package}.util.JsonUtils;
 import com.google.common.collect.Maps;
+import ${package}.util.JsonUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
