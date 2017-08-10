@@ -1,5 +1,10 @@
 # Spring Boot Archetype
 
+[![Build Status](https://img.shields.io/travis/drtrang/maven-archetype-springboot/master.svg?style=flat-square)](https://www.travis-ci.org/drtrang/maven-archetype-springboot)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.drtrang/maven-archetype-springboot.svg?style=flat-square)](https://maven-badges.herokuapp.com/maven-central/com.github.drtrang/maven-archetype-springboot)
+[![GitHub Release](https://img.shields.io/github/release/drtrang/maven-archetype-springboot.svg?style=flat-square)](https://github.com/drtrang/maven-archetype-springboot/releases)
+[![License](http://img.shields.io/badge/license-apache%202-blue.svg?style=flat-square)](https://github.com/drtrang/maven-archetype-springboot/blob/master/LICENSE)
+
 Spring Boot Archetype 将帮助你快速生成 Spring Boot 项目。
 
 ## 前置条件
