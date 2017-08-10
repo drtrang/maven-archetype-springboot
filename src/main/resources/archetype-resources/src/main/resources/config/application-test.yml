@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://
+    url:
     username:
     password:
     druid:

@@ -248,6 +248,11 @@
             </activation>
             <dependencies>
                 <dependency>
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
+                    <scope>runtime</scope>
+                </dependency>
+                <dependency>
                     <groupId>io.springfox</groupId>
                     <artifactId>springfox-swagger2</artifactId>
                     <version>${swagger2.version}</version>
