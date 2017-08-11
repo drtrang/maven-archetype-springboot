@@ -7,6 +7,8 @@
 
 Spring Boot Archetype 将帮助你快速生成 Spring Boot 项目。
 
+## 介绍
+详细介绍请移步：[Spring Boot 的 Maven 项目原型](http://blog.trang.space/2017/08/11/Spring%20Boot%20%E7%9A%84%20Maven%20%E9%A1%B9%E7%9B%AE%E5%8E%9F%E5%9E%8B/)
 
 ## 前置条件
 * [JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
