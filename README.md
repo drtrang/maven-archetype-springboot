@@ -33,6 +33,8 @@ mvn archetype:generate -DarchetypeGroupId=com.github.drtrang -DarchetypeArtifact
 
 其中 `$groupId`、`$artifactId`、`$version`、`$package` 为占位符，根据实际情况替换即可。
 
+**Note：无需将本项目 clone 到本地，直接运行上述脚本即可创建。**
+
 ### 启动项目
 在项目的根路径下执行以下脚本：
 ```
@@ -63,7 +65,7 @@ http://localhost:8080/swagger-ui.html
 * 选择 `maven-archetype-springboot:1.0.0` 并点击 `Next` 按钮
 * 填写项目属性，创建项目
 
-Note：`Add Archetype` 步骤只需执行一次，以后可直接选择 `maven-archetype-springboot:1.0.0`
+**Note：`Add Archetype` 步骤只需执行一次，以后可直接选择 `maven-archetype-springboot:1.0.0`**
 
 ![idea2](https://user-images.githubusercontent.com/13851701/29200507-7562009c-7e88-11e7-9cbf-2329da6f037b.png)
 
