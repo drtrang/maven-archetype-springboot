@@ -7,18 +7,21 @@
 
 Spring Boot Archetype 将帮助你快速生成 Spring Boot 项目。
 
+
 ## 前置条件
 * [JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Maven 3](http://maven.apache.org/download.cgi)
 
+
 ## 特点
-* [Spring Boot](http://projects.spring.io/spring-boot/) 1.5.6.RELEASE & Jetty
-* [MyBatis](http://www.mybatis.org/mybatis-3/zh/index.html) & [MyBatis Generator](http://www.mybatis.org/generator/) & [Mapper](https://github.com/abel533/mapper) & [PageHelper](https://github.com/pagehelper/Mybatis-PageHelper)
+* [Spring Boot 1.5.6.RELEASE](https://github.com/spring-projects/spring-boot) & Jetty
+* [MyBatis](https://github.com/mybatis/mybatis-3) & [MyBatis Generator](https://github.com/mybatis/generator) & [Mapper](https://github.com/abel533/mapper) & [PageHelper](https://github.com/pagehelper/Mybatis-PageHelper)
 * [Druid](https://github.com/alibaba/druid)
 * [Redisson](https://github.com/redisson/redisson)
 * [Copiers](https://github.com/drtrang/copiers)
 * [Swagger2](https://github.com/springfox/springfox)
 * [Lombok](https://github.com/rzwitserloot/lombok)
+
 
 ## 运行
 ### 创建项目
@@ -44,7 +47,10 @@ http://localhost:8080
 http://localhost:8080/swagger-ui.html
 ```
 
-## 集成 IDEA
+![swagger2](https://user-images.githubusercontent.com/13851701/29200486-45681c32-7e88-11e7-934c-c22eabe3a63f.png)
+
+
+## 集成 Intellij IDEA
 * 新建项目 `File > New > Project`
 * 选择 Maven 并勾选 `Create from archetype`
 * 点击 `Add Archetype` 按钮
@@ -56,6 +62,9 @@ http://localhost:8080/swagger-ui.html
 * 填写项目属性，创建项目
 
 Note：`Add Archetype` 步骤只需执行一次，以后可直接选择 `maven-archetype-springboot:1.0.0`
+
+![idea2](https://user-images.githubusercontent.com/13851701/29200507-7562009c-7e88-11e7-9cbf-2329da6f037b.png)
+
 
 ## 更新记录
 [Release Notes](https://github.com/drtrang/maven-archetype-springboot/releases)
