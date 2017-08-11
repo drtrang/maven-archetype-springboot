@@ -50,7 +50,7 @@ http://localhost:8080
 http://localhost:8080/swagger-ui.html
 ```
 
-![swagger2](https://user-images.githubusercontent.com/13851701/29200486-45681c32-7e88-11e7-934c-c22eabe3a63f.png)
+![swagger2](https://user-images.githubusercontent.com/13851701/29209263-34dcbc78-7ec0-11e7-85c2-4f6cd63c2fae.png)
 
 
 ## 集成 Intellij IDEA
