@@ -14,7 +14,7 @@ Spring Boot Archetype 将帮助你快速生成 Spring Boot 项目。
 
 
 ## 特点
-* [Spring Boot 1.5.6.RELEASE](https://github.com/spring-projects/spring-boot) & Jetty
+* [Spring Boot 1.5.6.RELEASE](https://github.com/spring-projects/spring-boot) with Jetty
 * [MyBatis](https://github.com/mybatis/mybatis-3) & [MyBatis Generator](https://github.com/mybatis/generator) & [Mapper](https://github.com/abel533/mapper) & [PageHelper](https://github.com/pagehelper/Mybatis-PageHelper)
 * [Druid](https://github.com/alibaba/druid)
 * [Redisson](https://github.com/redisson/redisson)
@@ -66,7 +66,7 @@ Note：`Add Archetype` 步骤只需执行一次，以后可直接选择 `maven-a
 ![idea2](https://user-images.githubusercontent.com/13851701/29200507-7562009c-7e88-11e7-9cbf-2329da6f037b.png)
 
 
-## 更新记录
+## Change Log
 [Release Notes](https://github.com/drtrang/maven-archetype-springboot/releases)
 
 
@@ -74,7 +74,7 @@ Note：`Add Archetype` 步骤只需执行一次，以后可直接选择 `maven-a
 任何意见和建议可以提 [Issue](https://github.com/drtrang/maven-archetype-springboot/issues)，我会酌情加到 [Todo List](https://github.com/drtrang/maven-archetype-springboot/blob/master/TODO.md)，一般情况一周内迭代完毕。
 
 
-## 作者信息
+## About Me
 QQ：349096849<br>
 Email：donghao.l@hotmail.com<br>
 Blog：[blog.trang.space](http://blog.trang.space)
