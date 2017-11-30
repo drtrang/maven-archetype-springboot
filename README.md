@@ -33,9 +33,9 @@ Spring Boot Archetype 将帮助你快速生成 Spring Boot 项目。
 
 ## 运行
 ### 创建项目
-运行以下脚本，其中 `$groupId`、`$artifactId`、`$version`、`$package` 为占位符，根据实际情况替换即可。
+运行以下脚本，其中 `${groupId}`、`${artifactId}`、`${version}`、`${package}` 为占位符，根据实际情况替换即可。
 ```
-mvn archetype:generate -DarchetypeGroupId=com.github.drtrang -DarchetypeArtifactId=maven-archetype-springboot -DarchetypeVersion=1.0.0 -DinteractiveMode=false -DgroupId=$groupId -DartifactId=$artifactId -Dversion=$version -Dpackage=$package
+mvn archetype:generate -DarchetypeGroupId=com.github.drtrang -DarchetypeArtifactId=maven-archetype-springboot -DarchetypeVersion=1.0.0 -DinteractiveMode=false -DarchetypeCatalog=local -DgroupId=${groupId} -DartifactId=${artifactId} -Dversion=${version} -Dpackage=${package}
 ```
 
 ### 启动项目
