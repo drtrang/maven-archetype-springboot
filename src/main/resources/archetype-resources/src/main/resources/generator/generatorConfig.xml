@@ -69,7 +69,8 @@
         <!-- 通用 Mapper 插件 -->
         <plugin type="com.github.trang.mybatis.generator.plugins.MapperPlugin">
             <property name="mappers" value="${base.mapper}"/>
-            <property name="lombok" value="${lombok}"/>
+            <property name="lombok" value="${lombok.type}"/>
+            <property name="forceAnnotation" value="${force.annotation}"/>
         </plugin>
         <!-- 生成实体类中的 toString() 方法 -->
         <plugin type="com.github.trang.mybatis.generator.plugins.GuavaToStringPlugin"/>

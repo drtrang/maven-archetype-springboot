@@ -31,7 +31,7 @@ public class CityController {
 
     @GetMapping("/list/{ids}")
     public ResponseEntity<List<City>> getByIds(@PathVariable List<Integer> ids) {
-        List<City> list = cityService.selectByIds(ids);
+        List<City> list = cityService.selectByPks(ids);
         return ResponseEntity.ok(list);
     }
 

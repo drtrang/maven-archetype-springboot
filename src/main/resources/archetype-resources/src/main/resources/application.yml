@@ -5,29 +5,10 @@ logging:
     root: info
 
 spring:
+  application:
+    name: ${artifactId}
   profiles:
     active: @mvn.profile.active@
-  datasource:
-    druid:
-      max-wait: 30000
-      validation-query: SELECT 1
-      test-while-idle: true
-      test-on-borrow: false
-      test-on-return: false
-      use-global-data-source-stat: true
-      stat:
-        log-slow-sql: true
-        slow-sql-millis: 1000
-        merge-sql: true
-      wall:
-        enabled: true
-        log-violation: true
-        throw-exception: false
-      slf4j:
-        enabled: true
-        statement-executable-sql-log-enable: true
-      stat-view-servlet:
-        enabled: true
   transaction:
     rollback-on-commit-failure: true
   mvc:
@@ -45,7 +26,8 @@ spring:
       preferred-json-mapper: jackson
 
 mybatis:
-  type-aliases-package: ${package}.model.domain
+  type-aliases-package: ${package}.model.domain;com.github.trang.typehandlers.alias
+  type-handlers-package: com.github.trang.typehandlers.type
   mapper-locations: classpath:mappers/*.xml
   check-config-location: false
   configuration:

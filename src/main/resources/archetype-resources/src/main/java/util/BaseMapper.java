@@ -1,8 +1,9 @@
 package ${package}.util;
 
+import tk.mybatis.mapper.common.ExampleMapper;
 import tk.mybatis.mapper.common.IdsMapper;
 import tk.mybatis.mapper.common.MySqlMapper;
-import tk.mybatis.mapper.common.rowbounds.SelectRowBoundsMapper;
+import tk.mybatis.mapper.common.RowBoundsMapper;
 
 /**
  * 自定义通用 Mapper
@@ -14,5 +15,6 @@ public interface BaseMapper<T> extends
         tk.mybatis.mapper.common.BaseMapper<T>,
         MySqlMapper<T>,
         IdsMapper<T>,
-        SelectRowBoundsMapper<T> {
+        ExampleMapper<T>,
+        RowBoundsMapper<T> {
 }

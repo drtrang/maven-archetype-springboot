@@ -22,13 +22,14 @@ Spring Boot Archetype 将帮助你快速生成 Spring Boot 项目。
 
 
 ## 特点
-* 基于 Spring Boot 1.5.6，内嵌 Jetty
-* 增加全局异常捕获、View to Json 等功能
-* 集成通用 Mapper 和 PageHelper，提供 BaseService，常用 CRUD 无需编写代码
-* 集成 MyBatis Generator，提供功能强大的 [MBG Plugin Extension](https://github.com/drtrang/mybatis-generator-extension)，如自动生成 Service、自动生成基于 Lombok 的 Model 类等等
+* 基于 Spring Boot 1.5.9，内嵌 Jetty
+* 提供全局异常捕获、View to Json、跨域访问等功能
+* 提供 Maven Profile 和 Spring Profile 完美融合的解决方案
+* 集成通用 Mapper 和 PageHelper，新增 BaseService，常用 CRUD 无需编写代码
+* 集成 MyBatis Generator，额外提供功能强大的插件拓展 [MBG Plugin Extension](https://github.com/drtrang/mybatis-generator-extension)
 * 集成 [Druid Spring Boot Starter](https://github.com/drtrang/druid-spring-boot)，无需显式声明数据源，支持多数据源
 * 集成 Swagger2，HTTP 接口自动生成接口文档
-* 集成常用工具，如 Copiers、CsvUtils、SqlMapper
+* 集成常用工具，如 Copiers、CsvUtils、DateUtils……
 
 
 ## 运行

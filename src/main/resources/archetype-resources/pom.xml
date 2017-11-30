@@ -3,71 +3,74 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>${groupId}</groupId>
-    <artifactId>${artifactId}</artifactId>
-    <version>${version}</version>
-
-    <name>${project.artifactId}</name>
-    <description>${project.artifactId}</description>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.6.RELEASE</version>
+        <version>1.5.9.RELEASE</version>
     </parent>
+
+    <groupId>${groupId}</groupId>
+    <artifactId>${artifactId}</artifactId>
+    <version>${version}</version>
+    <packaging>jar</packaging>
+
+    <name>${artifactId}</name>
+    <description>${artifactId}</description>
 
     <properties>
         <!-- 工程参数 -->
+        <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
         <!-- 基础依赖 -->
-        <mybatis-spring-boot-starter.version>1.3.0</mybatis-spring-boot-starter.version>
-        <mapper-spring-boot-starter.version>1.1.3</mapper-spring-boot-starter.version>
-        <mapper.version>3.4.2</mapper.version>
-        <pagehelper-spring-boot-starter.version>1.1.3</pagehelper-spring-boot-starter.version>
-        <mybatis-generator.version>1.3.5</mybatis-generator.version>
-        <mybatis-generator-extension.version>0.0.2</mybatis-generator-extension.version>
-        <druid-spring-boot-starter.version>1.0.3</druid-spring-boot-starter.version>
-        <sharding-jdbc.version>1.5.0</sharding-jdbc.version>
-        <spring-kafka.version>1.2.2.RELEASE</spring-kafka.version>
-        <redisson.version>3.5.0</redisson.version>
-        <dubbo.version>2.5.3</dubbo.version>
-        <netty.4.version>4.1.7.Final</netty.4.version>
-        <zkclient.version>0.10</zkclient.version>
-        <rxjava.version>2.1.2</rxjava.version>
         <cglib.version>3.2.5</cglib.version>
-        <fst.version>2.52</fst.version>
-        <swagger2.version>2.7.0</swagger2.version>
-        <!-- 第三方工具包 -->
-        <copiers.version>1.1.1</copiers.version>
         <commons-collections4>4.1</commons-collections4>
         <commons-fileupload.version>1.3.3</commons-fileupload.version>
-        <commons-io.version>2.5</commons-io.version>
-        <commons-lang3>3.6</commons-lang3>
+        <commons-io.version>2.6</commons-io.version>
+        <commons-lang3>3.7</commons-lang3>
         <commons-logging.version>99.0-does-not-exist</commons-logging.version>
-        <fastjson.version>1.2.36</fastjson.version>
+        <copiers.version>1.1.1</copiers.version>
+        <druid-spring-boot-starter.version>1.1.3</druid-spring-boot-starter.version>
+        <dubbo.version>2.5.7</dubbo.version>
+        <fastjson.version>1.2.41</fastjson.version>
+        <fst.version>2.56</fst.version>
         <guava.version>23.0</guava.version>
-        <junit.params.version>1.1.0</junit.params.version>
-        <okhttp.version>3.8.1</okhttp.version>
-        <univocity.parsers.version>2.5.2</univocity.parsers.version>
+        <mapper-spring-boot-starter.version>1.1.5</mapper-spring-boot-starter.version>
+        <mapper.version>3.4.4</mapper.version>
+        <mybatis-generator-extension.version>0.0.3</mybatis-generator-extension.version>
+        <mybatis-generator.version>1.3.5</mybatis-generator.version>
+        <mybatis-spring-boot-starter.version>1.3.1</mybatis-spring-boot-starter.version>
+        <netty.4.version>4.1.17.Final</netty.4.version>
+        <okhttp.version>3.9.1</okhttp.version>
+        <pagehelper-spring-boot-starter.version>1.2.3</pagehelper-spring-boot-starter.version>
+        <redisson.version>3.5.5</redisson.version>
+        <rxjava.version>2.1.7</rxjava.version>
+        <sharding-jdbc.version>2.0.0.M3</sharding-jdbc.version>
+        <spring-boot-autoconfigure.version>1.0.0</spring-boot-autoconfigure.version>
+        <spring-kafka.version>2.0.1.RELEASE</spring-kafka.version>
+        <swagger2.version>2.7.0</swagger2.version>
+        <typehandlers-encrypt.version>1.1.1</typehandlers-encrypt.version>
+        <univocity.parsers.version>2.5.9</univocity.parsers.version>
+        <zkclient.version>0.10</zkclient.version>
         <!-- Maven 插件 -->
+        <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
+        <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
+        <maven-assembly-plugin.version>3.1.0</maven-assembly-plugin.version>
         <maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
-        <maven-compiler-plugin.version>3.6.2</maven-compiler-plugin.version>
-        <maven-dependency-plugin.version>3.0.1</maven-dependency-plugin.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <maven-dependency-plugin.version>3.0.2</maven-dependency-plugin.version>
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
-        <maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
+        <maven-enforcer-plugin.version>3.0.0-M1</maven-enforcer-plugin.version>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
-        <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
+        <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
         <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
+        <maven-shade-plugin.version>3.1.0</maven-shade-plugin.version>
         <maven-site-plugin.version>3.6</maven-site-plugin.version>
         <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
-        <maven-surefire-plugin.version>2.20</maven-surefire-plugin.version>
-        <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
-        <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
+        <maven-surefire-plugin.version>2.20.1</maven-surefire-plugin.version>
     </properties>
 
     <dependencies>
@@ -96,6 +99,38 @@
             </exclusions>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.github.drtrang</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>${spring-boot-autoconfigure.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger2.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>${mybatis-spring-boot-starter.version}</version>
@@ -118,15 +153,20 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper-spring-boot-starter</artifactId>
-            <version>${pagehelper-spring-boot-starter.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.github.drtrang</groupId>
             <artifactId>mybatis-generator-extension</artifactId>
             <version>${mybatis-generator-extension.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.drtrang</groupId>
+            <artifactId>typehandlers-encrypt</artifactId>
+            <version>${typehandlers-encrypt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>${pagehelper-spring-boot-starter.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.drtrang</groupId>
@@ -139,25 +179,19 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-cache</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.redisson</groupId>
             <artifactId>redisson</artifactId>
             <version>${redisson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>${dubbo.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.101tec</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>${zkclient.version}</version>
         </dependency>
         <dependency>
             <groupId>cglib</groupId>
@@ -172,6 +206,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -229,12 +264,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>pl.pragmatists</groupId>
-            <artifactId>JUnitParams</artifactId>
-            <version>${junit.params.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <profiles>
@@ -252,16 +281,6 @@
                     <artifactId>h2</artifactId>
                     <scope>runtime</scope>
                 </dependency>
-                <dependency>
-                    <groupId>io.springfox</groupId>
-                    <artifactId>springfox-swagger2</artifactId>
-                    <version>${swagger2.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>io.springfox</groupId>
-                    <artifactId>springfox-swagger-ui</artifactId>
-                    <version>${swagger2.version}</version>
-                </dependency>
             </dependencies>
             <build>
                 <plugins>
@@ -270,7 +289,9 @@
                         <artifactId>mybatis-generator-maven-plugin</artifactId>
                         <version>${mybatis-generator.version}</version>
                         <configuration>
-                            <configurationFile>${basedir}/src/main/resources/generator/generatorConfig.xml</configurationFile>
+                            <configurationFile>
+                                ${basedir}/src/main/resources/generator/generatorConfig.xml
+                            </configurationFile>
                             <overwrite>true</overwrite>
                             <verbose>true</verbose>
                         </configuration>
@@ -399,6 +420,7 @@
                 <version>${maven-resources-plugin.version}</version>
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
+                    <detail>true</detail>
                 </configuration>
             </plugin>
             <plugin>
@@ -409,6 +431,7 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                     <compilerArgument>-parameters</compilerArgument>
+                    <useIncrementalCompilation>false</useIncrementalCompilation>
                 </configuration>
             </plugin>
             <plugin>

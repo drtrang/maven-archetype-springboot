@@ -1,69 +1,227 @@
 package ${package}.service;
 
 import com.github.pagehelper.PageInfo;
+import tk.mybatis.mapper.entity.Example;
 
 import java.io.Serializable;
 import java.util.List;
 
 /**
- * BaseService
+ * BaseService，包含常用的单表操作
  *
  * @author trang
  */
 public interface BaseService<T, PK extends Serializable> {
 
     // ------ C ------ //
-    /*
-     * 新增数据，值为null的field不会写入
-     */
-    int insert(T entity);
 
-    int insertBatch(List<T> entityList);
-
-    /*
-     * 新增数据，值为null的field也会写入
+    /**
+     * 新增数据，值为 null 的字段不会保存（可以保留字段的默认值）
+     *
+     * @param record 待保存的数据
+     * @return int 影响行数
      */
-    int insertUnchecked(T entity);
+    int insert(T record);
+
+    /**
+     * 新增数据，值为 null 的字段也会保存
+     *
+     * @param record 待保存的数据
+     * @return int 影响行数
+     */
+    int insertUnchecked(T record);
+
+    /**
+     * 批量新增数据，值为 null 的字段也会保存
+     *
+     * @param records 待保存的数据
+     * @return int 影响行数
+     */
+    int insertBatch(List<T> records);
 
     // ------ U ------ //
-    /*
-     * 更新数据，值为null的field不会写入
+
+    /**
+     * 根据主键更新数据，值为 null 的字段不会更新
+     *
+     * @param record 待更新的数据
+     * @return int 影响行数
      */
     int update(T record);
 
-    /*
-     * 更新数据，值为null的field也会写入
+    /**
+     * 根据主键更新数据，值为 null 的字段会更新为 null
+     *
+     * @param record 待更新的数据
+     * @return int 影响行数
      */
     int updateUnchecked(T record);
 
-    // ------ D ------ //
-    int delete(T record);
+    /**
+     * 根据 Example 条件更新数据，值为 null 的字段不会更新
+     *
+     * @param record  待更新的数据
+     * @param example where 条件
+     * @return int 影响行数
+     */
+    int updateByExample(T record, Example example);
 
+    /**
+     * 根据 Example 条件更新数据，值为 null 的字段会更新为 null
+     *
+     * @param record  待更新的数据
+     * @param example where 条件
+     * @return int 影响行数
+     */
+    int updateUncheckedByExample(T record, Example example);
+
+    // ------ D ------ //
+
+    /**
+     * 根据主键删除数据
+     *
+     * @param pk 主键
+     * @return int 影响行数
+     */
     int deleteByPk(PK pk);
 
-    int deleteByIds(Iterable<? extends PK> ids);
+    /**
+     * 根据主键集合删除数据
+     *
+     * @param pks 主键集合
+     * @return int 影响行数
+     */
+    int deleteByPks(Iterable<? extends PK> pks);
+
+    /**
+     * 根据 `=` 条件删除数据
+     *
+     * @param param where 条件
+     * @return int 影响行数
+     */
+    int delete(T param);
+
+    /**
+     * 删除全部数据
+     *
+     * @return int 影响行数
+     */
+    int deleteAll();
+
+    /**
+     * 根据 Example 条件删除数据
+     *
+     * @param example where 条件
+     * @return int 影响行数
+     */
+    int deleteByExample(Example example);
 
     // ------ R ------ //
-    List<T> select(T entity);
 
+    /**
+     * 根据主键查询数据
+     *
+     * @param pk 主键
+     * @return T 实体
+     */
     T selectByPk(PK pk);
 
-    T selectOne(T entity);
-
-    List<T> selectByIds(Iterable<? extends PK> ids);
-
-    int selectCount(T entity);
-
-    /*
-     * 分页查询，使用RowBounds方式，不会查询count
+    /**
+     * 根据主键集合查询数据
+     *
+     * @param pks 主键集合
+     * @return List<T> 实体集合
      */
-    PageInfo<T> selectPage(T entity, int pageNum, int pageSize);
+    List<T> selectByPks(Iterable<? extends PK> pks);
 
-    /*
-     * 分页查询，使用PageHelper.startPage()，查询count
+    /**
+     * 根据 `=` 条件查询数据集合
+     *
+     * @param param where 条件
+     * @return List<T> 实体集合
+     */
+    List<T> select(T param);
+
+    /**
+     * 根据 `=` 条件查询单条数据
+     *
+     * @param param where 条件
+     * @return T 实体
+     */
+    T selectOne(T param);
+
+    /**
+     * 查询全部数据
+     *
+     * @return List<T> 实体集合
+     */
+    List<T> selectAll();
+
+
+    /**
+     * 根据 `=` 条件查询数据数量
+     *
+     * @param param where 条件
+     * @return int 数据量
+     */
+    int selectCount(T param);
+
+
+    /**
+     * 根据 `=` 条件分页查询，不会查询 count
+     *
+     * @param param    where 条件
+     * @param pageNum  分页页码
+     * @param pageSize 分页数量
+     * @return PageInfo<T> 分页实体
+     */
+    PageInfo<T> selectPage(T param, int pageNum, int pageSize);
+
+    /**
+     * 根据 `=` 条件分页查询，查询count
      * 若同时需要排序，可手动指定PageHelper.orderBy()
-     * {@link PageHelper}
+     *
+     * @param param    where 条件
+     * @param pageNum  分页页码
+     * @param pageSize 分页数量
+     * @return PageInfo<T> 分页实体
      */
-    PageInfo<T> selectPageAndCount(T entity, int pageNum, int pageSize);
+    PageInfo<T> selectPageAndCount(T param, int pageNum, int pageSize);
+
+    /**
+     * 根据 Example 条件查询数据集合
+     *
+     * @param example where 条件
+     * @return List<T> 实体集合
+     */
+    List<T> selectByExample(Example example);
+
+    /**
+     * 根据 Example 条件查询数据数量
+     *
+     * @param example where 条件
+     * @return int 数据量
+     */
+    int selectCountByExample(Example example);
+
+    /**
+     * 根据 Example 条件分页查询，不会查询 count
+     *
+     * @param example  where 条件
+     * @param pageNum  分页页码
+     * @param pageSize 分页数量
+     * @return PageInfo<T> 分页实体
+     */
+    PageInfo<T> selectPageByExample(Example example, int pageNum, int pageSize);
+
+    /**
+     * 根据 Example 条件分页查询，不会查询 count
+     *
+     * @param example  where 条件
+     * @param pageNum  分页页码
+     * @param pageSize 分页数量
+     * @return PageInfo<T> 分页实体
+     */
+    PageInfo<T> selectPageAndCountByExample(Example example, int pageNum, int pageSize);
 
 }
