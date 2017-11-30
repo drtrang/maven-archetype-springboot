@@ -34,9 +34,17 @@ Spring Boot Archetype 将帮助你快速生成 Spring Boot 项目。
 
 ## 运行
 ### 创建项目
-运行以下脚本，其中 `${groupId}`、`${artifactId}`、`${version}`、`${package}` 为占位符，根据实际情况替换即可。
+运行以下脚本即可创建项目，脚本中包含 `${groupId}`、`${artifactId}`、`${version}`、`${package}` 4 个变量，可根据实际情况灵活改变。
+
+| 变量 | 必填 | 默认值
+| :-- | :-- | :-- | 
+| groupId | 是 | 无
+| artifactId | 是 | 无
+| version | 是 | 1.0.0-SNAPSHOT 
+| package | 是 | 无
+
 ```
-mvn archetype:generate -DarchetypeGroupId=com.github.drtrang -DarchetypeArtifactId=maven-archetype-springboot -DarchetypeVersion=1.0.0 -DinteractiveMode=false -DarchetypeCatalog=local -DgroupId=${groupId} -DartifactId=${artifactId} -Dversion=${version} -Dpackage=${package}
+mvn archetype:generate -DarchetypeGroupId=com.github.drtrang -DarchetypeArtifactId=maven-archetype-springboot -DarchetypeVersion=1.0.1 -DinteractiveMode=false -DarchetypeCatalog=local -DgroupId=${groupId} -DartifactId=${artifactId} -Dversion=${version} -Dpackage=${package}
 ```
 
 ### 启动项目
@@ -68,12 +76,12 @@ http://localhost:8080/swagger-ui.html
 * 点击 `Add Archetype` 按钮
 * 填写 `GroupId`: `com.github.drtrang`
 * 填写 `ArtifactId`: `maven-archetype-springboot`
-* 填写 `Version`: `1.0.0`
+* 填写 `Version`: `1.0.1`
 * 点击 `OK` 按钮
-* 选择 `maven-archetype-springboot:1.0.0` 并点击 `Next` 按钮
+* 选择 `maven-archetype-springboot:1.0.1` 并点击 `Next` 按钮
 * 填写项目属性，创建项目
 
-**Note：`Add Archetype` 步骤只需执行一次，以后可直接选择 `maven-archetype-springboot:1.0.0`**
+**Note：`Add Archetype` 步骤只需执行一次，以后可直接选择 `maven-archetype-springboot:1.0.1`**
 
 ![idea2](https://user-images.githubusercontent.com/13851701/29200507-7562009c-7e88-11e7-9cbf-2329da6f037b.png)
 
