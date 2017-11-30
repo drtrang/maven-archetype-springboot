@@ -10,10 +10,10 @@
     </parent>
 
     <artifactId>maven-archetype-springboot</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
     <packaging>maven-archetype</packaging>
 
-    <name>${project.artifactId}</name>
+    <name>maven-archetype-springboot</name>
     <description>基于 Spring Boot 的 Maven 原型</description>
     <url>https://github.com/drtrang/maven-archetype-springboot</url>
 
