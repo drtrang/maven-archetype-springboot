@@ -32,7 +32,7 @@
         <copiers.version>1.1.1</copiers.version>
         <druid-spring-boot-starter.version>1.1.3</druid-spring-boot-starter.version>
         <dubbo.version>2.5.7</dubbo.version>
-        <fastjson.version>1.2.41</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <fst.version>2.56</fst.version>
         <guava.version>23.0</guava.version>
         <mapper-spring-boot-starter.version>1.1.5</mapper-spring-boot-starter.version>
